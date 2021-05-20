@@ -27,6 +27,12 @@ public class FilteringApples {
 
         List<Apple> weirdApples = filterApples(inventory, apple -> apple.getWeight() < 80 || "brown".equals(apple.getColor()));
         System.out.println("weirdApples = " + weirdApples);
+
+        List<Apple> greenApplesByPassingMethod = filterApples(inventory, Apple::isGreenApple);
+        System.out.println("heavyApples = " + greenApplesByPassingMethod);
+
+        List<Apple> heavyApplesByPassingMethod = filterApples(inventory, Apple::isHeavyApple);
+        System.out.println("heavyApples = " + heavyApplesByPassingMethod);
     }
 
     public static List<Apple> filterGreenApples(List<Apple> inventory) {
@@ -47,14 +53,6 @@ public class FilteringApples {
             }
         }
         return result;
-    }
-
-    public static boolean isGreenApple(Apple apple) {
-        return "green".equals(apple.getColor());
-    }
-
-    public static boolean isHeavyApple(Apple apple) {
-        return apple.getWeight() > 150;
     }
 
     public static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) {
@@ -94,6 +92,14 @@ public class FilteringApples {
 
         public String toString() {
             return "Apple{" + "color='" + color + '\'' + ", weight=" + weight + '}';
+        }
+
+        public static boolean isGreenApple(Apple apple) {
+            return "green".equals(apple.getColor());
+        }
+
+        public static boolean isHeavyApple(Apple apple) {
+            return apple.getWeight() > 150;
         }
     }
 }
