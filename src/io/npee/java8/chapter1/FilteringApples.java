@@ -55,6 +55,14 @@ public class FilteringApples {
         return result;
     }
 
+    /**
+     * Predicate Example
+     * Predicate is often used in mathematics to mean something function-like that takes a value
+     *  for an argument and returns true or false.
+     * @param inventory List
+     * @param p Predicate
+     * @return List
+     */
     public static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) {
         List<Apple> result = new ArrayList<>();
         for (Apple apple : inventory) {
