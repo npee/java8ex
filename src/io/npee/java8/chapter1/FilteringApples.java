@@ -28,6 +28,9 @@ public class FilteringApples {
         List<Apple> weirdApples = filterApples(inventory, apple -> apple.getWeight() < 80 || "brown".equals(apple.getColor()));
         System.out.println("weirdApples = " + weirdApples);
 
+        /**
+         * Java 8 Method References (:: syntax)
+         */
         List<Apple> greenApplesByPassingMethod = filterApples(inventory, Apple::isGreenApple);
         System.out.println("heavyApples = " + greenApplesByPassingMethod);
 
