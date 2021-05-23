@@ -19,6 +19,9 @@ public class FilteringApples {
         List<Apple> heavyApples = filterHeavyApples(inventory);
         System.out.println("heavyApples = " + heavyApples);
 
+        /**
+         * Java 8 Lambda expressions (-> syntax)
+         */
         List<Apple> greenApples2 = filterApples(inventory, apple -> "green".equals(apple.getColor()));
         System.out.println("greenApples2 = " + greenApples2);
 
