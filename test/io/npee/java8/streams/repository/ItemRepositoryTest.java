@@ -6,6 +6,7 @@ import io.npee.java8.streams.domain.Item;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 class ItemRepositoryTest {
 
@@ -27,4 +28,23 @@ class ItemRepositoryTest {
         }
     }
 
+    @Test
+    void deleteTest() {
+        itemRepository.deleteById(2L);
+        List<Item> all = itemRepository.findAll();
+        for (int i = 0; i < all.size(); i++) {
+            System.out.println(all.get(i));
+        }
+        assertEquals(9, all.size());
+    }
+
+    @Test
+    void deleteExceptionTest() {
+        assertThrows(IllegalArgumentException.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                itemRepository.deleteById(20L);
+            }
+        });
+    }
 }
