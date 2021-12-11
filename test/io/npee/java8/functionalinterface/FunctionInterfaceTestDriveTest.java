@@ -45,4 +45,18 @@ class FunctionInterfaceTestDriveTest {
         }
         return transformedArray;
     }
+
+    @Test
+    void biFunctionTest() {
+        Map<String, Integer> salaries = new HashMap<>();
+        salaries.put("John", 40000);
+        salaries.put("Freddy", 30000);
+        salaries.put("Samuel", 50000);
+
+        salaries.replaceAll((name, oldValue) -> name.equals("Freddy") ? oldValue : oldValue + 10000);
+
+        assertEquals(50000, salaries.get("John"));
+        assertEquals(30000, salaries.get("Freddy"));
+        assertEquals(60000, salaries.get("Samuel"));
+    }
 }
