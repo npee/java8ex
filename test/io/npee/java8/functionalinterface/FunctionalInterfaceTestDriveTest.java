@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import java.util.function.Function;
 import org.junit.jupiter.api.Test;
 
-class FunctionalInterfaceTest {
+class FunctionalInterfaceTestDriveTest {
 
     @Test
     void functionTest() {
@@ -28,5 +28,21 @@ class FunctionalInterfaceTest {
 
         Function<Integer, String> intToQuoteString = quote.compose(intToString);
         assertEquals("'5'", intToQuoteString.apply(5));
+    }
+
+    @Test
+    void shortToByteFunctionTest() {
+        short[] array = {(short) 1, (short) 2, (short) 3};
+        byte[] transformedArray = transformArray(array, s -> (byte) (s * 2));
+
+        assertArrayEquals(new byte[]{(byte)2, (byte)4, (byte)6}, transformedArray);
+    }
+
+    public byte[] transformArray(short[] array, ShortToByteFunction function) {
+        byte[] transformedArray = new byte[array.length];
+        for (int i = 0; i < array.length; i++) {
+            transformedArray[i] = function.applyAsByte(array[i]);
+        }
+        return transformedArray;
     }
 }
