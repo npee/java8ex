@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import java.util.function.Function;
 import org.junit.jupiter.api.Test;
 
-class FunctionalInterfaceTestDriveTest {
+class FunctionInterfaceTestDriveTest {
 
     @Test
     void functionTest() {

@@ -1,4 +1,4 @@
 package io.npee.java8.functionalinterface;
 
-public class FunctionalInterfaceTestDrive {
+public class FunctionInterfaceTestDrive {
 }
