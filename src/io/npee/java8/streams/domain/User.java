@@ -1,20 +1,16 @@
 package io.npee.java8.streams.domain;
 
-import java.time.LocalDateTime;
-
 public class User {
     private final Long id;
     private String name;
     private String email;
     private String phone;
-    private final LocalDateTime createAt;
 
     public User(Long id, String name, String email, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.createAt = LocalDateTime.now();
     }
 
     public String getName() {
@@ -45,7 +41,11 @@ public class User {
         return id;
     }
 
-    public LocalDateTime getCreateAt() {
-        return createAt;
+    @Override
+    public String toString() {
+        return  "id = " + id +
+                ", name = " + name +
+                ", email = " + email +
+                ", phone = " + phone;
     }
 }

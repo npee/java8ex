@@ -1,7 +1,5 @@
 package io.npee.java8.streams.domain;
 
-import java.time.LocalDateTime;
-
 public class Item {
     private final Long id;
     private String name;
