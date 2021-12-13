@@ -3,11 +3,13 @@ package io.npee.java8.functionalinterface;
 import static org.junit.jupiter.api.Assertions.*;
 
 import io.npee.java8.streams.domain.User;
+import java.util.Random;
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
 import java.util.function.IntSupplier;
 import java.util.function.LongSupplier;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
 class SupplierInterfaceTestDriveTest {
@@ -39,6 +41,13 @@ class SupplierInterfaceTestDriveTest {
         assertEquals(8, intSupplier.getAsInt());
         assertEquals(8L, longSupplier.getAsLong());
         assertEquals(8.0d, doubleSupplier.getAsDouble());
+    }
+
+    @Test
+    void supplierStreamTest() {
+        Supplier<Integer> randomNumbersSupplier = () -> new Random().nextInt(100);
+
+        Stream.generate(randomNumbersSupplier).limit(5).forEach(System.out::println);
     }
 
 }
