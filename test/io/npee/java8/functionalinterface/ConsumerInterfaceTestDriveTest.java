@@ -48,4 +48,18 @@ class ConsumerInterfaceTestDriveTest {
 
         consumer1.andThen(consumer2).accept(stringList);
     }
+
+    @Test
+    void consumerParameterTest() {
+        List<String> stringList = Arrays.asList("aabbcc", "bbccdd", "ccddee");
+        Consumer<String> consumer = s -> System.out.println(s);
+
+        forEach(stringList, consumer);
+    }
+
+    static <T> void forEach(List<T> list, Consumer<T> consumer) {
+        for (T t : list) {
+            consumer.accept(t);
+        }
+    }
 }
