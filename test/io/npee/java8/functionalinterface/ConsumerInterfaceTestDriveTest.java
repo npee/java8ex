@@ -31,4 +31,21 @@ class ConsumerInterfaceTestDriveTest {
         Consumer<String> consumer = s -> System.out.println(s.toUpperCase());
         list.forEach(consumer);
     }
+
+    @Test
+    void andThenTest() {
+        List<String> stringList = Arrays.asList("aabbcc", "bbccdd", "ccddee");
+        Consumer<List<String>> consumer1 = list -> {
+            for (int i = 0; i < list.size(); i++) {
+                list.set(i, list.get(i).replace("bb", ""));
+            }
+        };
+        Consumer<List<String>> consumer2 = list -> {
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println(list.get(i));
+            }
+        };
+
+        consumer1.andThen(consumer2).accept(stringList);
+    }
 }
