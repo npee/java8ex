@@ -27,4 +27,15 @@ class PredicateInterfaceTestDriveTest {
         assertTrue(result);
     }
 
+    @Test
+    void orTest() {
+        Predicate<Integer> testEven = (num) -> num % 2 == 0;
+        Predicate<Integer> testLessThan100 = (num) -> num < 100;
+        Predicate<Integer> testPositive = (num) -> num > 0;
+
+        int target = -20;
+        boolean result = testEven.or(testLessThan100).or(testPositive).test(target);
+        assertTrue(result);
+    }
+
 }
