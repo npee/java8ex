@@ -38,4 +38,11 @@ class PredicateInterfaceTestDriveTest {
         assertTrue(result);
     }
 
+    @Test
+    void isEqualTest() {
+        String target = "Predicate";
+        boolean result = Predicate.isEqual("predicate").test(target);
+        assertFalse(result);
+    }
+
 }
