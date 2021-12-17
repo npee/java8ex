@@ -3,6 +3,8 @@ package io.npee.java8.functionalinterface;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
 class PredicateInterfaceTestDriveTest {
@@ -43,6 +45,12 @@ class PredicateInterfaceTestDriveTest {
         String target = "Predicate";
         boolean result = Predicate.isEqual("predicate").test(target);
         assertFalse(result);
+    }
+
+    @Test
+    void isEqualInStreamTest() {
+        Stream<Integer> intStream = IntStream.range(1, 10).boxed();
+        intStream.filter(Predicate.isEqual(5)).forEach(i -> System.out.println(i));
     }
 
 }
