@@ -53,4 +53,11 @@ class PredicateInterfaceTestDriveTest {
         intStream.filter(Predicate.isEqual(5)).forEach(i -> System.out.println(i));
     }
 
+    @Test
+    void negativeTest() {
+        String target = "Predicate";
+        Predicate<String> predicate = Predicate.isEqual("predicate");
+        boolean result = predicate.negate().test(target);
+        assertTrue(result);
+    }
 }
