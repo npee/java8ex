@@ -2,6 +2,8 @@ package io.npee.java8.functionalinterface;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import io.npee.java8.streams.domain.Item;
+import java.util.function.BinaryOperator;
 import java.util.function.UnaryOperator;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +26,16 @@ class OperatorInterfaceTestDriveTest {
         UnaryOperator<Integer> unaryOperator2 = n -> n * 1000;
         Integer result = unaryOperator1.andThen(unaryOperator2).apply(5);
         assertEquals(25000, result);
+    }
+
+    @Test
+    void binaryOperatorTest() {
+        BinaryOperator<Item> maxPrice = BinaryOperator.maxBy((Item i1, Item i2) -> i1.getPrice() - i2.getPrice());
+        Item item1 = new Item(1L, "item1", 20000, "아이템1");
+        Item item2 = new Item(2L, "item2", 15000, "아이템2");
+        Item maxPriceItem = maxPrice.apply(item1, item2);
+        assertEquals(1L, maxPriceItem.getId());
+
     }
 
 }
