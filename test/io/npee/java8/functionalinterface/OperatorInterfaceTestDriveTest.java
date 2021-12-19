@@ -36,6 +36,9 @@ class OperatorInterfaceTestDriveTest {
         Item maxPriceItem = maxPrice.apply(item1, item2);
         assertEquals(1L, maxPriceItem.getId());
 
+        BinaryOperator<Item> minPrice = BinaryOperator.minBy((Item i1, Item i2) -> i1.getPrice() - i2.getPrice());
+        Item minPriceItem = minPrice.apply(item2, item1);
+        assertEquals(2L, minPriceItem.getId());
     }
 
 }
