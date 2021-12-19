@@ -18,4 +18,12 @@ class OperatorInterfaceTestDriveTest {
         assertFalse(result2);
     }
 
+    @Test
+    void andThenTest() {
+        UnaryOperator<Integer> unaryOperator1 = n -> n * n;
+        UnaryOperator<Integer> unaryOperator2 = n -> n * 1000;
+        Integer result = unaryOperator1.andThen(unaryOperator2).apply(5);
+        assertEquals(25000, result);
+    }
+
 }
