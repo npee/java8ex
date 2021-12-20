@@ -1,6 +1,6 @@
-package io.npee.java8.streams.repository;
+package io.npee.java8.data.repository;
 
-import io.npee.java8.streams.domain.Item;
+import io.npee.java8.data.domain.Item;
 import java.util.ArrayList;
 import java.util.List;
 

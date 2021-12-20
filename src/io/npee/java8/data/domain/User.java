@@ -1,4 +1,4 @@
-package io.npee.java8.streams.domain;
+package io.npee.java8.data.domain;
 
 public class User {
     private final Long id;

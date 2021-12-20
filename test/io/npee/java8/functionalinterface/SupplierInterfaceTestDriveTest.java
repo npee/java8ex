@@ -2,7 +2,7 @@ package io.npee.java8.functionalinterface;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import io.npee.java8.streams.domain.User;
+import io.npee.java8.data.domain.User;
 import java.util.Random;
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;

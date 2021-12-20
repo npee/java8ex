@@ -1,4 +1,4 @@
-package io.npee.java8.streams.repository;
+package io.npee.java8.data.repository;
 
 import java.util.List;
 

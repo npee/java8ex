@@ -1,9 +1,9 @@
-package io.npee.java8.streams.service;
+package io.npee.java8.data.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import io.npee.java8.streams.domain.User;
-import io.npee.java8.streams.repository.UserRepository;
+import io.npee.java8.data.domain.User;
+import io.npee.java8.data.repository.UserRepository;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

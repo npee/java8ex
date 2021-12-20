@@ -2,7 +2,7 @@ package io.npee.java8.functionalinterface;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import io.npee.java8.streams.domain.Item;
+import io.npee.java8.data.domain.Item;
 import java.util.function.BinaryOperator;
 import java.util.function.UnaryOperator;
 import org.junit.jupiter.api.Test;
