@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
-class FilterTestDriveTest {
+class FilterTestDriveMapFlatMapTest {
 
     @Test
     void filterTest() {
