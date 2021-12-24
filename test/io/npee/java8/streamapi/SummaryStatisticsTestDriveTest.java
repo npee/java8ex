@@ -36,4 +36,26 @@ class SummaryStatisticsTestDriveTest {
         System.out.println("Count: " + stats.getCount());
     }
 
+    @Test
+    void combineTest() {
+        List<String> langs =
+            Arrays.asList("java", "kotlin", "haskell", "ruby", "javascript");
+        IntSummaryStatistics stats = langs.stream()
+                                          .mapToInt((lang) -> (lang.length()))
+                                          .summaryStatistics();
+
+        List<String> companies =
+            Arrays.asList("google", "apple", "google", "apple", "samsung");
+        IntSummaryStatistics stats2 = companies.stream()
+                                               .mapToInt((lang) -> (lang.length()))
+                                               .summaryStatistics();
+
+        stats.combine(stats2); // 통계 스트림 합치기 (각 통계의 결과끼리 다시 계산)
+
+        System.out.println("Max: " + stats.getMax());
+        System.out.println("Min: " + stats.getMin());
+        System.out.println("Average: " + stats.getAverage());
+        System.out.println("Count: " + stats.getCount());
+    }
+
 }
