@@ -22,4 +22,18 @@ class SummaryStatisticsTestDriveTest {
         System.out.println("Count: " + stats.getCount());
     }
 
+    @Test
+    void acceptTest() {
+        List<String> langs = Arrays.asList("java", "kotlin", "haskell", "ruby", "javascript");
+        IntSummaryStatistics stats = langs.stream()
+                                          .mapToInt((lang) -> (lang.length()))
+                                          .summaryStatistics();
+        stats.accept(20); // 추가
+
+        System.out.println("Max: " + stats.getMax());
+        System.out.println("Min: " + stats.getMin());
+        System.out.println("Average: " + stats.getAverage());
+        System.out.println("Count: " + stats.getCount());
+    }
+
 }
