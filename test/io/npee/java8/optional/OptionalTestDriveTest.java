@@ -27,5 +27,11 @@ class OptionalTestDriveTest {
         assertThrows(NoSuchElementException.class, () -> nullString.get());
     }
 
+    @Test
+    void emptyTest() {
+        Optional<String> empty = Optional.empty();
+        assertThrows(NoSuchElementException.class, () -> empty.get());
+    }
+
 
 }
