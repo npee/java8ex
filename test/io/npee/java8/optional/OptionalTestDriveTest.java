@@ -33,5 +33,33 @@ class OptionalTestDriveTest {
         assertThrows(NoSuchElementException.class, () -> empty.get());
     }
 
+    @Test
+    void isPresentTest() {
+        Optional<String> optionalString1 = Optional.of("optional");
+        Optional<String> optionalString2 = Optional.ofNullable("optional");
+        Optional<String> optionalString3 = Optional.ofNullable(null);
+
+        System.out.println("-- isPresent() --");
+        if (optionalString1.isPresent()) {
+            System.out.println(optionalString1.get());
+        }
+
+        if (optionalString2.isPresent()) {
+            System.out.println(optionalString2.get());
+        }
+
+        if (optionalString3.isPresent()) {
+            System.out.println(optionalString3.get());
+        }
+
+        System.out.println("-- ifPresent() --");
+
+        optionalString1.ifPresent(System.out::println);
+
+        optionalString2.ifPresent(System.out::println);
+
+        optionalString3.ifPresent(System.out::println);
+
+    }
 
 }
