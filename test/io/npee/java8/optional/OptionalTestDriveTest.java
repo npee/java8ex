@@ -75,4 +75,16 @@ class OptionalTestDriveTest {
         assertEquals("orElse", str2);
     }
 
+    @Test
+    void orElseGetTest() {
+        String nullString = null;
+        Optional<String> optionalString1 = Optional.of("optional");
+        Optional<String> optionalString2 = Optional.ofNullable(nullString);
+
+        String str1 = optionalString1.orElseGet(() -> "orElseGet");
+        System.out.println(str1);
+
+        String str2 = optionalString2.orElseGet(() -> "orElseGet");
+        System.out.println(str2);
+    }
 }
