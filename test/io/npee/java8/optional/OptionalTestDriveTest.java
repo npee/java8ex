@@ -100,4 +100,17 @@ class OptionalTestDriveTest {
         assertThrows(NullPointerException.class, () -> optionalString2.orElseThrow(NullPointerException::new));
 
     }
+
+    @Test
+    void filterTest() {
+        String nullString = null;
+        Optional<String> optionalString1 = Optional.of("optional");
+        Optional<String> optionalString2 = Optional.ofNullable(nullString);
+
+        Optional<String> filtered1 = optionalString1.filter(s -> s.contains("opt"));
+        Optional<String> filtered2 = optionalString2.filter(s -> s.contains("opt"));
+
+        filtered1.ifPresent(System.out::println);
+        filtered2.ifPresent(System.out::println);
+    }
 }
