@@ -68,8 +68,8 @@ class OptionalTestDriveTest {
         Optional<String> optionalString1 = Optional.of("optional");
         Optional<String> optionalString2 = Optional.ofNullable(nullString);
 
-        String str = optionalString1.orElse("orElse");
-        assertEquals("optional", str);
+        String str1 = optionalString1.orElse("orElse");
+        assertEquals("optional", str1);
 
         String str2 = optionalString2.orElse("orElse");
         assertEquals("orElse", str2);
@@ -82,9 +82,22 @@ class OptionalTestDriveTest {
         Optional<String> optionalString2 = Optional.ofNullable(nullString);
 
         String str1 = optionalString1.orElseGet(() -> "orElseGet");
-        System.out.println(str1);
+        assertEquals("optional", str1);
 
         String str2 = optionalString2.orElseGet(() -> "orElseGet");
-        System.out.println(str2);
+        assertEquals("orElseGet", str2);
+    }
+
+    @Test
+    void orElseThrowTest() {
+        String nullString = null;
+        Optional<String> optionalString1 = Optional.of("optional");
+        Optional<String> optionalString2 = Optional.ofNullable(nullString);
+
+        String str1 = optionalString1.orElseThrow(NullPointerException::new);
+        assertEquals("optional", str1);
+
+        assertThrows(NullPointerException.class, () -> optionalString2.orElseThrow(NullPointerException::new));
+
     }
 }
