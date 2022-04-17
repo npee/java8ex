@@ -28,4 +28,13 @@ class MaxMinTestDriveTest {
         assertEquals("javascript", optionalMaxString.get());
     }
 
+    @Test
+    void mixTestWithCustomComparator() {
+        List<String> langs = Arrays.asList("java", "kotlin", "haskell", "ruby", "javascript");
+        final Comparator<String> comparator = (s1, s2) -> Integer.compare(s1.length(), s2.length());
+        Optional<String> optionalMaxString = langs.stream().min(comparator);
+        optionalMaxString.ifPresent(System.out::println);
+        assertEquals("java", optionalMaxString.get());
+    }
+
 }
