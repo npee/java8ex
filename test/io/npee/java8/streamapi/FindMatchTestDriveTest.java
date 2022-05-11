@@ -47,5 +47,16 @@ class FindMatchTestDriveTest {
         assertTrue(noneMatchTrue);
     }
 
+    @Test
+    void differenceFindAndMatch() {
+        List<String> langs = Arrays.asList("java", "kotlin", "haskell", "ruby", "javascript");
+
+        Optional<String> findAny = langs.stream().filter(s -> s.startsWith("k")).findAny();
+        boolean anyMatch = langs.stream().anyMatch(s -> s.startsWith("k"));
+
+        assertEquals(findAny.get(), "kotlin");
+        assertEquals(anyMatch, true);
+    }
+
 
 }
