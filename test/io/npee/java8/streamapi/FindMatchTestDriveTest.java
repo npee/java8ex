@@ -29,5 +29,23 @@ class FindMatchTestDriveTest {
         assertTrue(anyElement.get().equals("java") || anyElement.get().equals("javascript"));
     }
 
+    @Test
+    void matchTest() {
+        List<String> langs = Arrays.asList("java", "kotlin", "haskell", "ruby", "javascript");
+
+        boolean anyMatchExpertsFalse = langs.stream().anyMatch(s -> s.startsWith("a"));
+        assertFalse(anyMatchExpertsFalse);
+
+        boolean anyMatchExpertsTrue = langs.stream().anyMatch(s -> s.startsWith("j"));
+        assertTrue(anyMatchExpertsTrue);
+
+
+        boolean allMatchFalse = langs.stream().allMatch(s -> s.startsWith("r"));
+        assertFalse(allMatchFalse);
+
+        boolean noneMatchTrue = langs.stream().noneMatch(s -> s.startsWith("x"));
+        assertTrue(noneMatchTrue);
+    }
+
 
 }
