@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 
@@ -62,6 +63,20 @@ class StreamToArrayTestDriveTest {
 
         Arrays.stream(result).forEach(System.out::println);
         assertInstanceOf(int[].class, result);
+    }
+
+    @Test
+    void doubleStream_to_primitive_double_array() {
+        double[] nums = {0.1, 0.2, 0.3};
+
+        DoubleStream doubleStream = Arrays.stream(nums);
+
+        double[] result = doubleStream
+            .map(Math::log10)
+            .toArray();
+
+        Arrays.stream(result).forEach(System.out::println);
+        assertInstanceOf(double[].class, result);
     }
 
 }
