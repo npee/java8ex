@@ -50,4 +50,18 @@ class StreamToArrayTestDriveTest {
         Arrays.stream(result).forEach(System.out::println);
     }
 
+    @Test
+    void intStream_to_primitive_int_array() {
+        int[] nums = {1, 2, 3};
+
+        IntStream intStream = Arrays.stream(nums);
+
+        int[] result = intStream
+            .map(i -> i * i)
+            .toArray();
+
+        Arrays.stream(result).forEach(System.out::println);
+        assertInstanceOf(int[].class, result);
+    }
+
 }
