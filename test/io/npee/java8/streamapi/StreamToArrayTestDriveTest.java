@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 
 class StreamToArrayTestDriveTest {
@@ -32,6 +33,20 @@ class StreamToArrayTestDriveTest {
         nums.add(5);
 
         Integer[] result = nums.stream().map(i -> i * i).toArray(Integer[]::new);
+        Arrays.stream(result).forEach(System.out::println);
+    }
+
+    @Test
+    void intStream_to_Integer_array() {
+        int[] nums = {1, 2, 3, 4, 5};
+
+        IntStream intStream = Arrays.stream(nums);
+
+        Integer[] result = intStream
+            .map(i -> i * i)
+            .boxed()
+            .toArray(Integer[]::new);
+
         Arrays.stream(result).forEach(System.out::println);
     }
 
