@@ -22,4 +22,17 @@ class StreamToArrayTestDriveTest {
         Arrays.stream(result).forEach(System.out::println);
     }
 
+    @Test
+    void stream_to_powered_integer_array() {
+        List<Integer> nums = new ArrayList<>();
+        nums.add(1);
+        nums.add(2);
+        nums.add(3);
+        nums.add(4);
+        nums.add(5);
+
+        Integer[] result = nums.stream().map(i -> i * i).toArray(Integer[]::new);
+        Arrays.stream(result).forEach(System.out::println);
+    }
+
 }
