@@ -59,4 +59,10 @@ class FunctionInterfaceTestDriveTest {
         assertEquals(30000, salaries.get("Freddy"));
         assertEquals(60000, salaries.get("Samuel"));
     }
+
+    @Test
+    void runnable_test() {
+        Runnable runnable = () -> System.out.println("This is runnable interface");
+        runnable.run();
+    }
 }
