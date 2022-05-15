@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import org.junit.jupiter.api.Test;
 
 class FunctionInterfaceTestDriveTest {
@@ -60,9 +61,26 @@ class FunctionInterfaceTestDriveTest {
         assertEquals(60000, salaries.get("Samuel"));
     }
 
+    /**
+     * public interface Runnable {
+     *      public abstract void run();
+     * }
+     */
     @Test
     void runnable_test() {
         Runnable runnable = () -> System.out.println("This is runnable interface");
         runnable.run();
+    }
+
+    /**
+     * public interface Supplier<T> {
+     *     T get();
+     * }
+     */
+    @Test
+    void supplier_test() {
+        Supplier<String> supplier = () -> "This is supplier interface";
+        String suppliedString = supplier.get();
+        System.out.println("suppliedString = " + suppliedString);
     }
 }
