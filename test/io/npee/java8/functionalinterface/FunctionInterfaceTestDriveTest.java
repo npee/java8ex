@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.Test;
@@ -82,5 +83,21 @@ class FunctionInterfaceTestDriveTest {
         Supplier<String> supplier = () -> "This is supplier interface";
         String suppliedString = supplier.get();
         System.out.println("suppliedString = " + suppliedString);
+    }
+
+    /**
+     * public interface Consumer<T> {
+     *     void accept(T t);
+     *
+     *     default Consumer<T> andThen(Consumer<? super T> after) {
+     *         Objects.requireNonNull(after);
+     *         return (T t) -> { accept(t); after.accept(t); };
+     *     }
+     * }
+     */
+    @Test
+    void consumer_test() {
+        Consumer<String> print = text -> System.out.println("This is " + text + " interface");
+        print.accept("consumer");
     }
 }
