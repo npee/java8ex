@@ -100,4 +100,12 @@ class FunctionInterfaceTestDriveTest {
         Consumer<String> print = text -> System.out.println("This is " + text + " interface");
         print.accept("consumer");
     }
+
+    @Test
+    void consumer_and_then_test() {
+        Consumer<String> print = text -> System.out.print("This is " + text + " ");
+        Consumer<String> printNext = System.out::println;
+        print.andThen(printNext).accept("consumer");
+    }
+
 }
