@@ -108,4 +108,29 @@ class FunctionInterfaceTestDriveTest {
         print.andThen(printNext).accept("consumer");
     }
 
+    /**
+     * public interface Function<T, R> {
+     *     R apply(T t);
+     *
+     *     default <V> Function<V, R> compose(Function<? super V, ? extends T> before) {
+     *         Objects.requireNonNull(before);
+     *         return (V v) -> apply(before.apply(v));
+     *     }
+     *
+     *     default <V> Function<T, V> andThen(Function<? super R, ? extends V> after) {
+     *         Objects.requireNonNull(after);
+     *         return (T t) -> after.apply(apply(t));
+     *     }
+     *
+     *     static <T> Function<T, T> identity() {
+     *         return t -> t;
+     *     }
+     * }
+     */
+    @Test
+    void function_test() {
+        Function<Integer, Double> squareRoot = Math::sqrt;
+        Double result = squareRoot.apply(10);
+        System.out.println(result);
+    }
 }
