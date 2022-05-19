@@ -133,4 +133,13 @@ class FunctionInterfaceTestDriveTest {
         Double result = squareRoot.apply(10);
         System.out.println(result);
     }
+
+    @Test
+    void function_and_then_test() {
+        Function<Integer, Double> squareRoot = Math::sqrt;
+        Function<Double, String> stringToPrint = value -> "Result is " + value + ".";
+        String result = squareRoot.andThen(stringToPrint).apply(10);
+        System.out.println(result);
+    }
+
 }
