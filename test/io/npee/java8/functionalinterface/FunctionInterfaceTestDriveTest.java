@@ -186,4 +186,12 @@ class FunctionInterfaceTestDriveTest {
         System.out.println("Is this less then 500? -> " + test);
     }
 
+    @Test
+    void predict_and_or_test() {
+        Predicate<Integer> lt500 = num -> num < 500;
+        Predicate<Integer> gt300 = num -> num > 300;
+        Predicate<Integer> isNegative = num -> num < 0;
+        boolean test = lt500.and(gt300).or(isNegative).test(499);
+        System.out.println("Is this less than 500 and greater than 300 or negative? -> " + test);
+    }
 }
