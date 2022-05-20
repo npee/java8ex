@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.Test;
 
@@ -151,6 +152,38 @@ class FunctionInterfaceTestDriveTest {
         Function<Integer, String> stringToPrint = value -> "Result is " + value + ".";
         String result = divideByTwo.compose(multiplyWithPlus1FromItself).andThen(stringToPrint).apply(100);
         System.out.println(result);
+    }
+
+    /**
+     * public interface Predicate<T> {
+     *     boolean test(T t);
+     *
+     *     default Predicate<T> and(Predicate<? super T> other) {
+     *         Objects.requireNonNull(other);
+     *         return (t) -> test(t) && other.test(t);
+     *     }
+     *
+     *     default Predicate<T> negate() {
+     *         return (t) -> !test(t);
+     *     }
+     *
+     *     default Predicate<T> or(Predicate<? super T> other) {
+     *         Objects.requireNonNull(other);
+     *         return (t) -> test(t) || other.test(t);
+     *     }
+     *
+     *     static <T> Predicate<T> isEqual(Object targetRef) {
+     *         return (null == targetRef)
+     *                 ? Objects::isNull
+     *                 : object -> targetRef.equals(object);
+     *     }
+     * }
+     */
+    @Test
+    void predict_test() {
+        Predicate<Integer> lt500 = num -> num < 500;
+        boolean test = lt500.test(499);
+        System.out.println("Is this less then 500? -> " + test);
     }
 
 }
