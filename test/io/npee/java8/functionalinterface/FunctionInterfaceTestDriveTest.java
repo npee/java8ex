@@ -184,6 +184,7 @@ class FunctionInterfaceTestDriveTest {
         Predicate<Integer> lt500 = num -> num < 500;
         boolean test = lt500.test(499);
         System.out.println("Is this less then 500? -> " + test);
+        assertTrue(lt500.test(499));
     }
 
     @Test
@@ -193,6 +194,7 @@ class FunctionInterfaceTestDriveTest {
         Predicate<Integer> isNegative = num -> num < 0;
         boolean test = lt500.and(gt300).or(isNegative).test(499);
         System.out.println("Is this less than 500 and greater than 300 or negative? -> " + test);
+        assertTrue(lt500.and(gt300).or(isNegative).test(499));
     }
 
     @Test
@@ -200,5 +202,6 @@ class FunctionInterfaceTestDriveTest {
         Predicate<Integer> isEquals = Predicate.isEqual(499);
         boolean test = isEquals.test(499);
         System.out.println("Is this 499? -> " + test);
+        assertTrue(isEquals.test(499));
     }
 }
