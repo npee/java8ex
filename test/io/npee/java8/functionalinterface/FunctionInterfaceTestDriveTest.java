@@ -142,4 +142,15 @@ class FunctionInterfaceTestDriveTest {
         System.out.println(result);
     }
 
+    @Test
+    void function_compose_test() {
+        // get sum of 1 to n
+        Function<Integer, Integer> divideByTwo = value -> value / 2;
+        Function<Integer, Integer> multiplyWithPlus1FromItself = value -> value * (value + 1);
+
+        Function<Integer, String> stringToPrint = value -> "Result is " + value + ".";
+        String result = divideByTwo.compose(multiplyWithPlus1FromItself).andThen(stringToPrint).apply(100);
+        System.out.println(result);
+    }
+
 }
