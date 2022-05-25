@@ -62,4 +62,12 @@ class MethodReferenceTestDriveTest {
             return u1.getAge().compareTo(u2.getAge());
         }
     }
+
+    @Test
+    void reference_to_an_instance_method_of_an_arbitrary_object_of_a_particular_type() {
+        List<Integer> nums = Arrays.asList(10, 51, 24, 30, 55, 28, 1, 19);
+        // List<Integer> sorted = nums.stream().sorted((a, b) -> a.compareTo(b)).collect(Collectors.toList());
+        List<Integer> sorted = nums.stream().sorted(Integer::compareTo).collect(Collectors.toList());
+        sorted.forEach(System.out::println);
+    }
 }
