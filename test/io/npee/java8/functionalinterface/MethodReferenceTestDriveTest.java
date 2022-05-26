@@ -3,6 +3,7 @@ package io.npee.java8.functionalinterface;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.IntFunction;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -44,6 +45,11 @@ class MethodReferenceTestDriveTest {
             this.age = age;
         }
 
+        public User(String username) {
+            this.username = username;
+            this.age = 0;
+        }
+
         private String username;
         private Integer age;
 
@@ -70,4 +76,18 @@ class MethodReferenceTestDriveTest {
         List<Integer> sorted = nums.stream().sorted(Integer::compareTo).collect(Collectors.toList());
         sorted.forEach(System.out::println);
     }
+
+    @Test
+    void reference_to_a_constructor() {
+        List<String> langs = Arrays.asList("java", "kotlin", "haskell", "ruby", "javascript");
+//        User[] users = langs.stream().sorted(String::compareTo).map(u -> new User(u)).toArray(new IntFunction<User[]>() {
+//            @Override
+//            public User[] apply(int value) {
+//                return new User[value];
+//            }
+//        });
+        User[] users = langs.stream().sorted(String::compareTo).map(User::new).toArray(User[]::new);
+        Arrays.stream(users).forEach(u -> System.out.println(u.getUsername()));
+    }
+
 }
