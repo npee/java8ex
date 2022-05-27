@@ -90,4 +90,14 @@ class MethodReferenceTestDriveTest {
         Arrays.stream(users).forEach(u -> System.out.println(u.getUsername()));
     }
 
+    @Test
+    void reference_to_a_varargs_method() {
+        List<String> usernames = Arrays.asList("user1", "user2");
+        User[] users = usernames.stream().map(User::new).toArray(User[]::new);
+        Arrays.stream(users).forEach(MethodReferenceTestDriveTest::printAllUsernames);
+    }
+
+    private static void printAllUsernames(User... users) {
+        Arrays.stream(users).forEach(u -> System.out.println(u.getUsername()));
+    }
 }
