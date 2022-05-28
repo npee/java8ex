@@ -61,4 +61,50 @@ class BestPracticeTestDriveTest {
         String method();
     }
 
+    /**
+     * Don't Overuse Default Methods in Functional Interfaces
+     */
+    @Test
+    void do_not_overuse_default_methods_in_functional_interfaces() {
+        ExtendedFoo extendedFoo = string -> "foo " + string;
+        String res = extendedFoo.method("string");
+        String bar = extendedFoo.defaultBar();
+        String baz = extendedFoo.defaultBaz();
+        System.out.println("res = " + res);
+        System.out.println("bar = " + bar);
+        System.out.println("baz = " + baz);
+    }
+
+    @FunctionalInterface
+    public interface ExtendedFoo extends Bar, Baz {
+        @Override
+        default String defaultCommon() {
+            return Bar.super.defaultCommon(); // Bad Practice
+        }
+    }
+
+    @FunctionalInterface
+    public interface Baz {
+        String method(String string);
+        default String defaultBaz() {
+            return "default baz";
+        }
+        // Add defaultCommon each interfaces
+        default String defaultCommon(){
+            return "default common";
+        }
+    }
+
+    @FunctionalInterface
+    public interface Bar {
+        String method(String string);
+        default String defaultBar() {
+            return "default bar";
+        }
+        // Add defaultCommon each interfaces
+        default String defaultCommon(){
+            return "default common";
+        }
+    }
+
 }
