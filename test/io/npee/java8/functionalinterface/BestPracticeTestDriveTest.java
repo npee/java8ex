@@ -107,4 +107,22 @@ class BestPracticeTestDriveTest {
         }
     }
 
+    /**
+     * Instantiate Functional Interfaces With Lambda Expressions
+     */
+    @Test
+    void instantiate_functional_interfaces_with_lambda_expressions() {
+//        Foo fooByInnerClass = new Foo() {
+//            @Override
+//            public String method(String string) {
+//                return string + " from Foo";
+//            }
+//        };
+
+        Foo foo = parameter -> parameter + " from Foo";
+        String res = foo.method("String");
+        System.out.println("res = " + res);
+    }
+
+
 }
