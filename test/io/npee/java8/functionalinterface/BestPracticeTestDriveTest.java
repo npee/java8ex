@@ -3,6 +3,7 @@ package io.npee.java8.functionalinterface;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 import org.junit.jupiter.api.Test;
 
 class BestPracticeTestDriveTest {
@@ -43,4 +44,21 @@ class BestPracticeTestDriveTest {
             return fn.apply(string);
         }
     }
+
+    /**
+     * Use the @FunctionalInterface Annotation
+     */
+    @Test
+    void use_the_functional_interface_annotation() {
+    }
+
+    public interface NotAnnotatedFoo {
+        String method();
+    }
+
+    @FunctionalInterface
+    public interface AnnotatedFoo {
+        String method();
+    }
+
 }
