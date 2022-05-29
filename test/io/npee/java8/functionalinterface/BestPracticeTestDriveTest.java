@@ -2,6 +2,7 @@ package io.npee.java8.functionalinterface;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.concurrent.Callable;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.Test;
@@ -124,5 +125,37 @@ class BestPracticeTestDriveTest {
         System.out.println("res = " + res);
     }
 
+    /**
+     * Avoid Overloading Methods With Functional Interfaces as Parameters
+     * Solution:
+     * 1. The first option is to use methods with different names.
+     * 2. The second option is to perform casting manually.
+     */
+    @Test
+    void avoid_overloading_methods_with_functional_interfaces_as_parameters() {
+        Processor processor = new ProcessorImpl();
+        // String result = processor.process(() -> "abc"); // reference to process is ambiguous
+        // 2.
+        String result = processor.process((Supplier<String>) () -> "abc");
+    }
 
+    public interface Processor {
+        String process(Callable<String> c) throws Exception;
+        String process(Supplier<String> s);
+        // 1.
+        // String processWithCallable(Callable<String> c) throws Exception;
+        // String processWithSupplier(Supplier<String> s);
+    }
+
+    public class ProcessorImpl implements Processor {
+        @Override
+        public String process(Callable<String> c) throws Exception {
+            return "callable process";
+        }
+
+        @Override
+        public String process(Supplier<String> s) {
+            return "supplier process";
+        }
+    }
 }
